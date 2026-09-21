@@ -1,0 +1,13 @@
+# dsh-memory: long-term memory that survives context compaction.
+# Memories live in ~/.dsh/memory (change `storeDir` to relocate), outside the
+# context window. Every turn injects the core memories plus this session's
+# working set; a condensation is announced before and reconciled after.
+#
+# `core://` and `work://` memories are global (visible from every workspace);
+# `project://` and `notes://` belong to the workspace they were written in.
+# Change `globalDomains` to move that line, or pass `scope` to memory_save.
+#
+# Put the URIs loaded on every wake under `bootUris`, for example:
+#   bootUris:
+#     - 'core://identity'
+#     - 'core://human/preferences'

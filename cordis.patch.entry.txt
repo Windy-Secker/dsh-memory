@@ -1,0 +1,14 @@
+- insert:
+    - id: memory
+      name: 'dsh-memory'
+      config:
+        storeDir: ''
+        domains: ['core', 'project', 'work', 'notes']
+        # Memories in these domains are visible from every workspace unless a
+        # write says otherwise; every other domain belongs to the workspace it
+        # was written in.
+        globalDomains: ['core', 'work']
+        injectChars: 7000
+        workingLimit: 6
+        pressureRatio: 0.8
+        contextWindow: 1000000

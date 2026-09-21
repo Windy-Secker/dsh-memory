@@ -1,0 +1,8 @@
+# Nothing here is needed to run the plugin.
+node_modules/
+*.log
+
+# Local store and probe output, if a storeDir is ever pointed inside the checkout.
+memory/
+prompt-probe.log
+*.bak-*

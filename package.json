@@ -1,0 +1,38 @@
+{
+  "name": "dsh-memory",
+  "version": "0.1.0",
+  "description": "Durable, self-authored URI-graph memory for DeepSeek Harness: survives context compaction, scopes memories to global or a workspace, injects the working set every turn, and warns before history is condensed.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis-plugin",
+    "agent-memory",
+    "context-compaction",
+    "long-term-memory"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./store": "./lib/store.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/store.js",
+    "lib/render.js",
+    "cordis.patch.snippet.yml",
+    "cordis.patch.entry.txt",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "install-memory.ps1",
+    "test/*.mjs"
+  ],
+  "scripts": {
+    "test": "node test/store.test.mjs && node test/prompt-contract.check.mjs && node test/activate.check.mjs",
+    "verify:tools": "node test/tools-offered.mjs",
+    "verify:scope": "node test/verify-scope.mjs"
+  },
+  "license": "MIT"
+}
