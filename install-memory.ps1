@@ -32,7 +32,13 @@ $ErrorActionPreference = 'Stop'
 $utf8 = New-Object System.Text.UTF8Encoding($false)
 function Read-Text([string]$Path) { return [System.IO.File]::ReadAllText($Path, [System.Text.Encoding]::UTF8) }
 function Write-Text([string]$Path, [string]$Text) { [System.IO.File]::WriteAllText($Path, $Text, $utf8) }
-$source = Join-Path $PSScriptRoot 'dsh-memory'
+
+# Two supported layouts:
+#   - a clone of the plugin repository, where this script sits beside lib/
+#   - a workspace that keeps the plugin in a `dsh-memory/` subdirectory
+# Detecting the first makes the published repository self-contained instead of
+# requiring callers to know which shape they have.
+$source = if (Test-Path (Join-Path $PSScriptRoot 'lib\index.js')) { $PSScriptRoot } else { Join-Path $PSScriptRoot 'dsh-memory' }
 $profileDir = Join-Path $DshHome "profiles\$Profile"
 $target = Join-Path $profileDir 'node_modules\dsh-memory'
 $patchPath = Join-Path $profileDir 'cordis.patch.yml'
