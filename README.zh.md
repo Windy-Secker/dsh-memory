@@ -75,7 +75,7 @@ dsh-memory 把这个过程改成三步：
 
 ---
 
-## 三、落盘位置（你问的第 2 个问题）
+## 三、落盘位置
 
 **能指定，配置项叫 `storeDir`。**
 
@@ -87,7 +87,7 @@ dsh-memory 把这个过程改成三步：
   index.json      会话账本：工作集、压缩历史
 ```
 
-改法：编辑 `C:\Users\ouyan\.dsh\profiles\web\cordis.patch.yml` 里 `dsh-memory` 那一段的 `storeDir`：
+改法：编辑 `C:\Users\<你>\.dsh\profiles\web\cordis.patch.yml` 里 `dsh-memory` 那一段的 `storeDir`：
 
 ```yaml
 - insert:
