@@ -112,14 +112,14 @@ which reads the tool list out of the last logged request — the cheapest answer
 
 ### Configuration
 
-The installer writes one row into `~/.dsh/profiles/<profile>/cordis.patch.yml`:
+The installer writes one row into `$DSH_HOME/profiles/<profile>/cordis.patch.yml`:
 
 ```yaml
 - insert:
     - id: memory
       name: 'dsh-memory'
       config:
-        storeDir: ''                      # default: ~/.dsh/memory
+        storeDir: ''                      # default: $DSH_HOME/memory
         domains: ['core', 'project', 'work', 'notes']
         globalDomains: ['core', 'work']   # domains that default to global scope
         injectChars: 7000                 # character budget for the injected block
@@ -143,7 +143,7 @@ The memories loaded on every wake — the ones that answer "who am I, who is the
 ## What gets stored
 
 ```
-~/.dsh/memory/
+$DSH_HOME/memory/
   memories.json   the graph: domains, nodes, versions, scopes, snapshots
   index.json      session ledger: working sets, compaction history
 ```

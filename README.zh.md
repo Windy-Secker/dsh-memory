@@ -79,15 +79,15 @@ dsh-memory 把这个过程改成三步：
 
 **能指定，配置项叫 `storeDir`。**
 
-默认位置：`C:\Users\<你>\.dsh\memory\`
+默认位置：`$DSH_HOME/memory/`（`DSH_HOME` 未设置时退回 `%USERPROFILE%\.dsh\memory\`）
 
 ```
-~/.dsh/memory/
+$DSH_HOME/memory/
   memories.json   记忆图：域、节点、版本、快照
   index.json      会话账本：工作集、压缩历史
 ```
 
-改法：编辑 `C:\Users\ouyan\.dsh\profiles\web\cordis.patch.yml` 里 `dsh-memory` 那一段的 `storeDir`：
+改法：编辑 `$DSH_HOME\profiles\web\cordis.patch.yml` 里 `dsh-memory` 那一段的 `storeDir`：
 
 ```yaml
 - insert:
@@ -110,7 +110,7 @@ dsh-memory 把这个过程改成三步：
 - **换目录不会迁移已有记忆**。想搬的话，先把 `memories.json` 和 `index.json` 复制过去再改配置。插件在目录不存在时会自动新建空库。
 - **想随项目走**，可以把 `storeDir` 指到项目目录下（例如 `'E:\dsh\workspace\dsh\.memory'`），这样一个项目一份记忆、可以进 git；缺点是跨项目的通用结论就看不到了。**通用结论建议留在默认的全局库，项目内状态再另开一个。**
 - **多份记忆库不会互相干扰**，互不读取。
-- 目录由 dsh 进程在插件加载时创建（`~/.dsh/memory` 就是这么出现的），所以沙箱外的写入是 dsh 进程自己做的，不受你的文件沙箱限制。
+- 目录由 dsh 进程在插件加载时创建（`$DSH_HOME/memory` 就是这么出现的），所以沙箱外的写入是 dsh 进程自己做的，不受你的文件沙箱限制。
 
 ---
 
@@ -143,7 +143,7 @@ dsh-memory 把这个过程改成三步：
 
 | 字段 | 默认 | 说明 |
 | --- | --- | --- |
-| `storeDir` | 空 → `~/.dsh/memory` | 记忆库落盘目录（你现在设的是 `E:\dsh\memory`） |
+| `storeDir` | 空 → `$DSH_HOME/memory` | 记忆库落盘目录（你现在设的是 `E:\dsh\memory`） |
 | `domains` | `core, project, work, notes` | 允许的命名空间；必须包含 `core` |
 | `globalDomains` | `core, work` | **这些域的记忆默认是全局的**；其余域属于写入时所在的工作区 |
 | `bootUris` | 空 | 每次醒来必读的记忆 URI（不分作用域，一律加载） |
