@@ -1,5 +1,5 @@
 # dsh-memory: long-term memory that survives context compaction.
-# Memories live in ~/.dsh/memory (change `storeDir` to relocate), outside the
+# Memories live in $DSH_HOME/memory (change `storeDir` to relocate), outside the
 # context window. Every turn injects the core memories plus this session's
 # working set; a condensation is announced before and reconciled after.
 #
